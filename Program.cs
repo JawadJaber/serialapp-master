@@ -89,7 +89,9 @@ namespace serialapp
             //Console.WriteLine($"Received Unicode.BigEndianUnicode.GetString: {Encoding.BigEndianUnicode.GetString(arg2)}");
             //Console.WriteLine($"Received arg1: {arg1.ToString()}");
             Console.WriteLine($"Received BitConverter.ToString: {BitConverter.ToString(arg2)}");
-            Console.WriteLine($"Received Hex: {arg2}");
+            Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(arg2,0)}");
+            Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(arg2,1)}");
+            
             //Console.WriteLine($"Received HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2)): {HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2))}");
 
 
