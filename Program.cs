@@ -63,8 +63,8 @@ namespace serialapp
             mySer.DataReceived += MySer_DataReceived;
             mySer.Open();
 
-            mySer.Read(FromHex("01 03 75 31 00 00 0E 09"));
-            //mySer.Write(System.Text.Encoding.UTF8.GetBytes("Hello Serial port!"));
+            //mySer.Read(FromHex("01 03 75 31 00 00 0E 09"));
+            mySer.Write(FromHex("01 03 75 31 00 00 0E 09"));
             while (!Console.KeyAvailable) ;
             mySer.Close();
         }
