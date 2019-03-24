@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using NModbus;
 using NModbus.IO;
 
 namespace serialapp
@@ -76,6 +77,8 @@ namespace serialapp
             mySer.Close();
         }
 
+       
+
         private static void MySer_DataReceived(object arg1, byte[] arg2)
         {
             //Console.WriteLine($"Received: {System.Text.Encoding.UTF8.GetString(arg2)}");
@@ -86,7 +89,12 @@ namespace serialapp
             //Console.WriteLine($"Received Unicode.BigEndianUnicode.GetString: {Encoding.BigEndianUnicode.GetString(arg2)}");
             //Console.WriteLine($"Received arg1: {arg1.ToString()}");
             Console.WriteLine($"Received BitConverter.ToString: {BitConverter.ToString(arg2)}");
+            Console.WriteLine($"Received Hex: {arg2}");
             //Console.WriteLine($"Received HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2)): {HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2))}");
+
+
+
+
 
             var str = BitConverter.ToString(arg2);
 
