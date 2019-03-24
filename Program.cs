@@ -24,22 +24,25 @@ namespace serialapp
             return words;
         }
 
-      
+
 
         static void Main(string[] args)
         {
 
             string address = "42-40-42-40-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-40-55-B1-B1-8D-81-9B-95-C9-4B-85-B1-81-83-1A-C9-A3-0A-06-00-00-00-00-00-00-00-00-00-00-00-00-00";
 
-          
 
-         
 
-        
+            Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(FromHex(address), 0)}");
+            Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(FromHex(address), 1)}");
+            //Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(FromHex("4A"), 0)}");
+            //Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(FromHex("4A"), 1)}");
 
-            foreach (var item in GetNextChars(address,8))
+
+
+            foreach (var item in GetNextChars(address, 8))
             {
-                var base10 = int.Parse(item.Replace("-",""), System.Globalization.NumberStyles.HexNumber);
+                var base10 = int.Parse(item.Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
                 Console.WriteLine($"base10 = {base10}");
             }
 
@@ -72,12 +75,13 @@ namespace serialapp
             SerialDevice mySer = new SerialDevice("/dev/ttyS0", BaudRate.B115200);
             mySer.DataReceived += MySer_DataReceived;
             mySer.Open();
+            
             mySer.Write(System.Text.Encoding.UTF8.GetBytes("Hello Serial port!"));
             while (!Console.KeyAvailable) ;
             mySer.Close();
         }
 
-       
+
 
         private static void MySer_DataReceived(object arg1, byte[] arg2)
         {
@@ -89,9 +93,12 @@ namespace serialapp
             //Console.WriteLine($"Received Unicode.BigEndianUnicode.GetString: {Encoding.BigEndianUnicode.GetString(arg2)}");
             //Console.WriteLine($"Received arg1: {arg1.ToString()}");
             Console.WriteLine($"Received BitConverter.ToString: {BitConverter.ToString(arg2)}");
-            Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(arg2,0)}");
-            Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(arg2,1)}");
-            
+
+            if (BitConverter.ToString(arg2).Length > 2)
+            {
+                Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(arg2, 0)}");
+                Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(arg2, 1)}");
+            }
             //Console.WriteLine($"Received HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2)): {HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2))}");
 
 
@@ -104,7 +111,7 @@ namespace serialapp
             Console.WriteLine($"base10 is {base10}");
 
 
-           
+
 
             //foreach (var item in str.Split("-"))
             //{
@@ -160,7 +167,7 @@ namespace serialapp
             }
         }
 
-    
+
 
 
     }
