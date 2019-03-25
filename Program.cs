@@ -32,10 +32,12 @@ namespace serialapp
          
            //Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(FromHex("4A"), 0)}");
             //Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(FromHex("4A"), 1)}");
-            var intValue = 30002;
-            Console.WriteLine($"to hex string {intValue.ToString("X")}");
+            //var intValue = 30002;
+            var intValue = 30002.ToString("X");
+            Console.WriteLine($"to hex string {intValue}");
 
-           // Console.WriteLine($"from hex {FromHex("01 03 75 31 00 00 0E 09")}");
+            //Console.WriteLine($"from hex {FromHex("01 03 75 31 00 00 0E 09")}");
+            //Console.WriteLine($"from hex {HexadecimalEncoding.FromHexString("83 04")}");
         
           
             Console.ReadLine();
@@ -63,10 +65,12 @@ namespace serialapp
             mySer.DataReceived += MySer_DataReceived;
             mySer.Open();
 
+            mySer.Write(new byte[] { 0x01, 0x03, 0x83, 0x04, 0x00, 0x01, 0xCF, 0xC9 });
             //mySer.Read(FromHex("01 03 75 31 00 00 0E 09"));
-            //mySer.Write(FromHex("01 03 75 31 00 00 0E 09"));
-            mySer.Write(System.Text.Encoding.UTF8.GetBytes("Hello Serial port!"));
-            while (!Console.KeyAvailable) ;
+            //mySer.Write(System.Text.Encoding.UTF8.GetBytes("Hello Serial port!"));
+
+            //mySer.
+            Console.ReadLine();
             mySer.Close();
         }
 

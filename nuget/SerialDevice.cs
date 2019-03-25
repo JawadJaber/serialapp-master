@@ -106,18 +106,18 @@ namespace System.IO.Ports
             Marshal.FreeHGlobal(ptr);
         }
 
-        //public void Read(byte[] buf)
-        //{
-        //    if (!fd.HasValue)
-        //    {
-        //        throw new Exception();
-        //    }
+        public void Read(byte[] buf)
+        {
+            if (!fd.HasValue)
+            {
+                throw new Exception();
+            }
 
-        //    IntPtr ptr = Marshal.AllocHGlobal(buf.Length);
-        //    Marshal.Copy(buf, 0, ptr, buf.Length);
-        //    Libc.read(fd.Value, ptr, buf.Length);
-        //    Marshal.FreeHGlobal(ptr);
-        //}
+            IntPtr ptr = Marshal.AllocHGlobal(buf.Length);
+            Marshal.Copy(buf, 0, ptr, buf.Length);
+            Libc.read(fd.Value, ptr, buf.Length);
+            Marshal.FreeHGlobal(ptr);
+        }
 
         public static string[] GetPortNames()
         {
