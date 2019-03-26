@@ -61,16 +61,25 @@ namespace serialapp
                 return;
             }
             Console.WriteLine("Yes, we have the embedded serial port available, opening it");
-            SerialDevice mySer = new SerialDevice("/dev/ttyS0", BaudRate.B115200);
-            mySer.DataReceived += MySer_DataReceived;
+            SerialDevice mySer = new SerialDevice("/dev/ttyS0", BaudRate.B19200);
             mySer.Open();
 
             mySer.Write(new byte[] { 0x01, 0x03, 0x83, 0x04, 0x00, 0x01, 0xCF, 0xC9 });
-            //mySer.Read(FromHex("01 03 75 31 00 00 0E 09"));
-            //mySer.Write(System.Text.Encoding.UTF8.GetBytes("Hello Serial port!"));
 
-            //mySer.
-            Console.ReadLine();
+            ModbusRTU mrtu = new ModbusRTU();
+
+            for (ushort i = 1; i < 30000; i++)
+            {
+                var v = new short[13];
+                var message = new byte[8];
+                mrtu.BuildMessage(Convert.ToByte(1), Convert.ToByte(3), i,1, ref message);
+                mySer.Write(message);
+                
+            }
+
+            mySer.DataReceived += MySer_DataReceived;
+
+          
             mySer.Close();
         }
 
@@ -87,11 +96,13 @@ namespace serialapp
             //Console.WriteLine($"Received arg1: {arg1.ToString()}");
             Console.WriteLine($"Received BitConverter.ToString: {BitConverter.ToString(arg2)}");
 
-            if (BitConverter.ToString(arg2).Length > 2)
-            {
-                Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(arg2, 0)}");
-                Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(arg2, 1)}");
-            }
+            Console.ReadLine();
+
+            //if (BitConverter.ToString(arg2).Length > 2)
+            //{
+            //    Console.WriteLine($"Received BitConverter.ToSingle(arg2,0: {BitConverter.ToSingle(arg2, 0)}");
+            //    Console.WriteLine($"Received BitConverter.ToSingle(arg2,1: {BitConverter.ToSingle(arg2, 1)}");
+            //}
             //Console.WriteLine($"Received HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2)): {HexadecimalEncoding.FromHexString(BitConverter.ToString(arg2))}");
 
 
@@ -158,6 +169,101 @@ namespace serialapp
 
 
     }
+
+
+    //---------------------------------------------------------------
+    // ModbusRTU
+    //
+    // This is used in serial communication & makes use of a compact,
+    // binary representation of the data for protocol communication.
+    //
+    // 2013 Rectius Informática Ltda -  http://www.rectius.com.br
+    //---------------------------------------------------------------
+
+
+    public class ModbusRTU
+    {
+       
+        public string modbusStatus;
+
+        #region Constructor / Deconstructor
+        public ModbusRTU()
+        {
+        }
+        ~ModbusRTU()
+        {
+        }
+        #endregion
+
+     
+
+        #region CRC Computation
+        public void GetCRC(byte[] message, ref byte[] CRC)
+        {
+            //Function expects a modbus message of any length as well as a 2 byte CRC array in which to 
+            //return the CRC values:
+
+            ushort CRCFull = 0xFFFF;
+            byte CRCHigh = 0xFF, CRCLow = 0xFF;
+            char CRCLSB;
+
+            for (int i = 0; i < (message.Length) - 2; i++)
+            {
+                CRCFull = (ushort)(CRCFull ^ message[i]);
+
+                for (int j = 0; j < 8; j++)
+                {
+                    CRCLSB = (char)(CRCFull & 0x0001);
+                    CRCFull = (ushort)((CRCFull >> 1) & 0x7FFF);
+
+                    if (CRCLSB == 1)
+                        CRCFull = (ushort)(CRCFull ^ 0xA001);
+                }
+            }
+            CRC[1] = CRCHigh = (byte)((CRCFull >> 8) & 0xFF);
+            CRC[0] = CRCLow = (byte)(CRCFull & 0xFF);
+        }
+        #endregion
+
+        #region Build Message
+        public void BuildMessage(byte address, byte type, ushort start, ushort registers, ref byte[] message)
+        {
+            //Array to receive CRC bytes:
+            byte[] CRC = new byte[2];
+
+            message[0] = address;
+            message[1] = type;
+            message[2] = (byte)(start >> 8);
+            message[3] = (byte)start;
+            message[4] = (byte)(registers >> 8);
+            message[5] = (byte)registers;
+
+            GetCRC(message, ref CRC);
+            message[message.Length - 2] = CRC[0];
+            message[message.Length - 1] = CRC[1];
+
+            Console.WriteLine($"message = {BitConverter.ToString(message)}");
+        }
+        #endregion
+
+        #region Check Response
+        private bool CheckResponse(byte[] response)
+        {
+            //Perform a basic CRC check:
+            Console.WriteLine($"response {BitConverter.ToString(response)}");
+            byte[] CRC = new byte[2];
+            GetCRC(response, ref CRC);
+            if (CRC[0] == response[response.Length - 2] && CRC[1] == response[response.Length - 1])
+                return true;
+            else
+                return false;
+        }
+        #endregion
+
+      
+    }
+
+
 
 
 }
