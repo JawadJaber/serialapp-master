@@ -61,23 +61,26 @@ namespace serialapp
                 return;
             }
             Console.WriteLine("Yes, we have the embedded serial port available, opening it");
-            SerialDevice mySer = new SerialDevice("/dev/ttyS0", BaudRate.B19200);
+            SerialDevice mySer = new SerialDevice("/dev/ttyS0", BaudRate.B57600);
+            mySer.DataReceived += MySer_DataReceived;
             mySer.Open();
 
             mySer.Write(new byte[] { 0x01, 0x03, 0x83, 0x04, 0x00, 0x01, 0xCF, 0xC9 });
 
             ModbusRTU mrtu = new ModbusRTU();
 
-            for (ushort i = 1; i < 30000; i++)
+            for (ushort i = 30000; i < 30050; i++)
             {
                 var v = new short[13];
                 var message = new byte[8];
                 mrtu.BuildMessage(Convert.ToByte(1), Convert.ToByte(3), i,1, ref message);
                 mySer.Write(message);
+
+                mySer.Read(message);
                 
             }
 
-            mySer.DataReceived += MySer_DataReceived;
+            
 
           
             mySer.Close();
