@@ -61,7 +61,7 @@ namespace serialapp
                 return;
             }
             Console.WriteLine("Yes, we have the embedded serial port available, opening it");
-            SerialDevice mySer = new SerialDevice("/dev/ttyS0", BaudRate.B57600);
+            SerialDevice mySer = new SerialDevice("/dev/tty.usbserial-AL00YYL3", BaudRate.B57600);
             mySer.DataReceived += MySer_DataReceived;
             mySer.Open();
 
